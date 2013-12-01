@@ -1,3 +1,3 @@
 Everything outside of the `node_modules` folder is licensed by Alan deLevie under the MIT License.
 
-Everything inside of the `node_modules` folder is licenses by whatever license is specified in each module's `package.json` file.
+Everything inside of the `node_modules` folder is licensed by whatever license is specified in each module's `package.json` file.
