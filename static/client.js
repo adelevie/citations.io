@@ -83,7 +83,7 @@ var initializeLoadingDialogue = function() {
   $('#loading').hide();
 };
 
-var showLoadingDialoge = function() {
+var showLoadingDialogue = function() {
   $('#loading').show();
 };
 
@@ -94,7 +94,7 @@ $(document).ready(function() {
   initializeFilepicker();
   bindButtonToClick(function() {
     documentUploaded(function(blob) {
-      showLoadingDialoge();
+      showLoadingDialogue();
       getTextFromDocumentUrl(blob.url, function(text) {
         removeOldCitations();
         appendNewCitations(text);
