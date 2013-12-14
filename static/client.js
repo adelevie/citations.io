@@ -31,13 +31,22 @@ var getCitationsFromText = function(text, success) {
   });
 };
 
+var arrayOfUrlATagsFromCitation = function(citation) {
+  return _.map(citation.urls, function(url) {
+    return _.template("<a href='<%= url %>'><%= inner %></a>")({url: url.url, inner: url.source});
+  });
+};
+
 // response handler function adds citations to the DOM
 var handleCitationResponse = function(citations) {
+  var citations = _.filter(citations, function(citation) {
+    return citation.type == 'case';
+  });
   citations.forEach(function(citation) {
-    var citationListItem = document.createElement('li');
-    citationListItem.innerHTML = citation.match;
-    citationListItem.className = 'citationListItem';
-    getCitationsList().append(citationListItem);
+    var compiled = _.template("<li><%= name %> (<%= urls.join(' | ') %>)</li>");
+    var li = compiled({name: citation.match, urls: arrayOfUrlATagsFromCitation(citation)});
+    console.log(compiled);
+    getCitationsList().append(li);
   });
 };
 
